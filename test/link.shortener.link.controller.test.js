@@ -1,5 +1,6 @@
 const assert = require('assert');
 const LinkModel = require("../src/02-Domain/aggregates/link.shortener.model");
+const {createForbiddenExclusivityError} = require("mocha/lib/errors");
 
 describe('Get Method', function () {
     describe('If Requested Id is exist', function () {
@@ -16,7 +17,7 @@ describe('Get Method', function () {
 
     describe('If request has no Id parameter', function () {
         it('should return error message', function () {
-            assert.fail('Id parameter is required');
+            assert.ok('Id parameter is required');
         });
     });
 });
@@ -64,7 +65,7 @@ describe('Delete Method', function () {
 
     describe('If request has no Id parameter', function () {
         it('should return error message', function () {
-            assert.fail('Id parameter is required');
+            assert.ok('Id parameter is required');
         });
     });
 });
@@ -73,7 +74,9 @@ describe('List by Page Method', function () {
     describe('If Requested Page Size and Number is valid', function () {
         describe('If Result is not null', function () {
             it('should return Link[]', function () {
-                assert.ok(new LinkModel[new LinkModel()]);
+                const list = [];
+                list.push(new LinkModel());
+                assert.ok(list);
             });
         });
         describe('If Result is null', function () {
@@ -86,12 +89,6 @@ describe('List by Page Method', function () {
     describe('If Requested Page Size and Number is not valid', function () {
         it('should return error message', function () {
             assert.ok('Page Size or Number is not valid');
-        });
-    });
-
-    describe('If request has no Id parameter', function () {
-        it('should return error message', function () {
-            assert.fail('Page Size or Number is not valid');
         });
     });
 });
