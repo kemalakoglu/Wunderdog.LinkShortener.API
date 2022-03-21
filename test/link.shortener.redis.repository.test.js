@@ -1,10 +1,10 @@
-const LinkModel = require("../src/02-Domain/aggregates/link.shortener.model");
+const linkModel = require("../src/02-Domain/aggregates/link.shortener.model");
 const assert = require("assert");
 describe('Most Searched Link Cache', function () {
     describe('If Result is not null', function () {
         it('should return Link[]', function () {
             const list = [];
-            list.push(new LinkModel());
+            list.push(new linkModel());
             assert.ok(list);
         });
     });
@@ -20,7 +20,7 @@ describe('Last 10 Links Cache', function () {
     describe('If Result is not null', function () {
         it('should return []', function () {
             const list = [];
-            list.push(new LinkModel());
+            list.push(new linkModel());
             assert.ok(list);
         });
     });
@@ -36,7 +36,7 @@ describe('LinksByDay Cache', function () {
     describe('If Result is not null', function () {
         it('should return []', function () {
             const list = [];
-            list.push(new LinkModel());
+            list.push(new linkModel());
             assert.ok(list);
         });
     });
@@ -53,7 +53,7 @@ describe('List by Page Cache', function () {
         describe('If Result is not null', function () {
             it('should return []', function () {
                 const list = [];
-                list.push(new LinkModel());
+                list.push(new linkModel());
                 assert.ok(list);
             });
         });
@@ -74,7 +74,7 @@ describe('List by Page Cache', function () {
 describe('Get Cache', function () {
     describe('If Requested Id is exist', function () {
         it('should return Cache Model', function () {
-            assert.ok(new LinkModel());
+            assert.ok(new linkModel());
         });
     });
 

@@ -1,4 +1,4 @@
-class Constants{
+class constants{
     getMostSearchedLinksKey() {
         return 'GetMostSearchedLinks'
     };
@@ -22,4 +22,4 @@ class Constants{
     };
 }
 
-module.exports = Constants;
+module.exports = constants;

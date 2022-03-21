@@ -10,21 +10,21 @@ const bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 
 router.get('/getLastTenLinksAsync', async function (req, res, next) {
-    const response = await queries.GetLastTenLinksAsync();
+    const response = await queries.getLastTenLinksAsync();
     console.log("Operation is Succeeded.");
     res.send(response);
 });
 
 router.get('/getMostSearchedLinksAsync', async function (req, res, next) {
 
-    const response = await queries.GetMostSearchedLinksAsync();
+    const response = await queries.getMostSearchedLinksAsync();
     console.log("Operation is Succeeded.");
     res.send(response);
 });
 
 router.get('/getDailyLinksAsync', async function (req, res, next) {
 
-    const response = await queries.GetDailyLinksAsync();
+    const response = await queries.getDailyLinksAsync();
     console.log("Operation is Succeeded.");
     res.send(response);
 
@@ -36,7 +36,7 @@ router.get('/listByPageAsync/:pageNum/:pageSize', jsonParser, async function (re
         return;
     }
 
-    const response = await queries.GetListByPageAsync(req.params.pageSize, req.params.pageNum);
+    const response = await queries.getListByPageAsync(req.params.pageSize, req.params.pageNum);
     console.log("Operation is Succeeded.");
     res.send(response);
 

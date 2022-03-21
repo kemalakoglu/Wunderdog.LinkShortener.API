@@ -1,17 +1,17 @@
-const IRedisRepository = require("../contracts/IRedisRepository");
+const IredisRepository = require("../contracts/IredisRepository");
 const redis = require('redis');
 const initRedis = require("../../01-Infrastructure/redis.initialize");
 const constants = require("../../01-Infrastructure/constants");
 const redisKeys = new constants();
 
-class RedisRepository extends IRedisRepository {
+class redisRepository extends IredisRepository {
 
     constructor() {
         super();
     }
 
 
-    async GetAsync(id) {
+    async getAsync(id) {
         const client = await initRedis();
         const response = await client.get(id);
         if (response == null)
@@ -19,7 +19,7 @@ class RedisRepository extends IRedisRepository {
         return response;
     }
 
-    async GetMostSearchedLinksAsync() {
+    async getMostSearchedLinksAsync() {
         const client = await initRedis();
         const response = await client.get(redisKeys.getMostSearchedLinksKey());
         if (response == null)
@@ -27,14 +27,14 @@ class RedisRepository extends IRedisRepository {
         return response;
     }
 
-    async GetListByPageAsync(pageSize, pageNumber) {
+    async getListByPageAsync(pageSize, pageNumber) {
         const response = await client.get(redisKeys.getListByPageKey());
         if (response == null)
             return ("Data not found");
         return response;
     }
 
-    async GetLastTenLinksAsync() {
+    async getLastTenLinksAsync() {
         const client = await initRedis();
         const response = await client.get(redisKeys.getLastTenLinksKey());
         if (response == null)
@@ -42,7 +42,7 @@ class RedisRepository extends IRedisRepository {
         return response;
     }
 
-    async GetDailyLinksAsync() {
+    async getDailyLinksAsync() {
         const client = await initRedis();
         const response = await client.get(redisKeys.getDailyLinksKey());
         if (response == null)
@@ -51,4 +51,4 @@ class RedisRepository extends IRedisRepository {
     }
 }
 
-module.exports = RedisRepository;
+module.exports = redisRepository;

@@ -1,29 +1,29 @@
-const RedisRepository = require('../02-Domain/aggregates/link.shortener.redis.repository');
-const redisRepository = new RedisRepository();
+const redisRepository = require('../02-Domain/aggregates/link.shortener.redis.repository');
+const repository = new redisRepository();
 
-class ApplicationQueries {
-    async GetAsync(id) {
-        return await redisRepository.GetAsync(id);
+class applicationQueries {
+    async getAsync(id) {
+        return await repository.getAsync(id);
     }
 
-    async GetListByPageAsync(pageSize, pageNumber) {
-        return await redisRepository.GetListByPageAsync();
+    async getListByPageAsync(pageSize, pageNumber) {
+        return await repository.getListByPageAsync();
     }
 
-    async GetMostSearchedLinksAsync() {
-        return await redisRepository.GetMostSearchedLinksAsync();
+    async getMostSearchedLinksAsync() {
+        return await repository.getMostSearchedLinksAsync();
     }
 
-    async GetLastTenLinksAsync() {
-        return await redisRepository.GetLastTenLinksAsync();
+    async getLastTenLinksAsync() {
+        return await repository.getLastTenLinksAsync();
     }
 
-    async GetDailyLinksAsync() {
-        return await redisRepository.GetDailyLinksAsync();
+    async getDailyLinksAsync() {
+        return await repository.getDailyLinksAsync();
     }
 }
 
-module.exports = ApplicationQueries;
+module.exports = applicationQueries;
 
 
 
