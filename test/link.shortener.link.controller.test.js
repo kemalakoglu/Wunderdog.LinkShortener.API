@@ -1,11 +1,11 @@
 const assert = require('assert');
-const LinkModel = require("../src/02-Domain/aggregates/link.shortener.model");
+const linkModel = require("../src/02-Domain/aggregates/link.shortener.model");
 const {createForbiddenExclusivityError} = require("mocha/lib/errors");
 
 describe('Get Method', function () {
     describe('If Requested Id is exist', function () {
         it('should return Link Model', function () {
-            assert.ok(new LinkModel());
+            assert.ok(new linkModel());
         });
     });
 
@@ -75,7 +75,7 @@ describe('List by Page Method', function () {
         describe('If Result is not null', function () {
             it('should return Link[]', function () {
                 const list = [];
-                list.push(new LinkModel());
+                list.push(new linkModel());
                 assert.ok(list);
             });
         });

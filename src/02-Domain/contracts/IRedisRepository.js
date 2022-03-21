@@ -1,23 +1,22 @@
-class IRedisRepository {
+class IredisRepository {
     constructor() {
     }
 
-    
-async GetAsync(id){
 
+    async getAsync(id) {
+    }
+
+    async getMostSearchedLinksAsync() {
+    }
+
+    async getListByPageAsync(pageSize, pageNumber) {
+    }
+
+    async getLastTenLinksAsync() {
+    }
+
+    async getDailyLinksAsync() {
+    }
 }
 
-async GetMostSearchedLinksAsync() {
-}
-
-async GetListByPageAsync(pageSize, pageNumber) {
-}
-
-async GetLastTenLinksAsync() {
-}
-
-async GetDailyLinksAsync() {
-}
-}
-
-module.exports = IRedisRepository;
+module.exports = IredisRepository;

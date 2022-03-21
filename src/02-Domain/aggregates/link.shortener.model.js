@@ -1,11 +1,11 @@
-class LinkModel {
+class linkModel {
     constructor(){
         this.Id = '';
-        this.Url = '';
-        this.ShortenedUrl = '';
-        this.CreateDate = '';
-        this.UpdateDate = '';
+        this.link = '';
+        this.shortenedUrl = '';
+        this.createDate = '';
+        this.updateDate = '';
     }
 }
 
-module.exports = LinkModel;
+module.exports = linkModel;

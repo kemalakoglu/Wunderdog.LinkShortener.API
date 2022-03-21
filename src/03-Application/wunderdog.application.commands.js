@@ -1,10 +1,11 @@
 const kafkaProducer = require('../01-Infrastructure/kafka.producer');
 const constants = require('../01-Infrastructure/constants');
+const initRedis = require("../../01-Infrastructure/redis.initialize");
 const producer = new kafkaProducer();
 const kafkaTopics = new constants();
-class ApplicationCommands {
-    async GetAsync(id) {
-        return await redisRepository.GetAsync(id);
+class applicationCommands {
+    async getAsync(id) {
+        return await redisRepository.getAsync(id);
     }
 
     async CreateAsync(request) {
@@ -12,12 +13,20 @@ class ApplicationCommands {
     }
 
     async UpdateAsync(request) {
+        const client = await initRedis();
+        const response = await client.get(request.id);
+        if (response == null)
+            return ("Data not found");
         await producer.produce(kafkaTopics.updateAsyncTopic(), JSON.stringify(request).toString());
     }
 
     async DeleteAsync(request) {
+        const client = await initRedis();
+        const response = await client.get(request.id);
+        if (response == null)
+            return ("Data not found");
         await producer.produce(kafkaTopics.deleteAsyncTopic(), JSON.stringify(request).toString());
     }
 }
 
-module.exports = ApplicationCommands;
+module.exports = applicationCommands;

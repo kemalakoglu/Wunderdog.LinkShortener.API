@@ -18,7 +18,7 @@ router.get('/:id', jsonParser, async function (req, res, next) {
         return;
     }
 
-    const response = await queries.GetAsync(req.params.id)
+    const response = await queries.getAsync(req.params.id)
     console.log("Create operation is Succeeded.");
     res.send(response);
 });

@@ -10,7 +10,7 @@ const kafka = new Kafka({
 
 const admin = kafka.admin();
 
-class KafkaProducer {
+class kafkaProducer {
 	async createTopic() {
 		await admin.connect()
 		try {
@@ -55,4 +55,4 @@ class KafkaProducer {
 }
 
 
-module.exports = KafkaProducer;
+module.exports = kafkaProducer;
