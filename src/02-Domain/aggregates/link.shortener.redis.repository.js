@@ -28,6 +28,7 @@ class redisRepository extends IredisRepository {
     }
 
     async getListByPageAsync(pageSize, pageNumber) {
+        const client = await initRedis();
         const response = await client.get(redisKeys.getListByPageKey());
         if (response == null)
             return ("Data not found");

@@ -1,6 +1,6 @@
 const kafkaProducer = require('../01-Infrastructure/kafka.producer');
 const constants = require('../01-Infrastructure/constants');
-const initRedis = require("../../01-Infrastructure/redis.initialize");
+const initRedis = require("../01-Infrastructure/redis.initialize");
 const producer = new kafkaProducer();
 const kafkaTopics = new constants();
 class applicationCommands {
