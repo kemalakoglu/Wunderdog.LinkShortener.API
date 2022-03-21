@@ -1,16 +1,10 @@
-const IredisRepository = require("../contracts/IredisRepository");
 const redis = require('redis');
 const initRedis = require("../../01-Infrastructure/redis.initialize");
 const constants = require("../../01-Infrastructure/constants");
 const redisKeys = new constants();
 
-class redisRepository extends IredisRepository {
-
-    constructor() {
-        super();
-    }
-
-
+class redisRepository {
+    
     async getAsync(id) {
         const client = await initRedis();
         const response = await client.get(id);
@@ -28,6 +22,7 @@ class redisRepository extends IredisRepository {
     }
 
     async getListByPageAsync(pageSize, pageNumber) {
+        const client = await initRedis();
         const response = await client.get(redisKeys.getListByPageKey());
         if (response == null)
             return ("Data not found");
