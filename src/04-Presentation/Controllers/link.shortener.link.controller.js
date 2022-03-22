@@ -1,9 +1,6 @@
 const _ = require("lodash");
 const express = require('express');
 const router = express.Router();
-const rest = require('rest');
-const mime = require('rest/interceptor/mime');
-const errorCode = require('rest/interceptor/errorCode');
 const applicationQueries = require('../../03-Application/wunderdog.application.queries');
 const applicationCommands = require('../../03-Application/wunderdog.application.commands');
 const commands = new applicationCommands();
@@ -23,30 +20,26 @@ router.get('/:id', jsonParser, async function (req, res, next) {
     res.send(response);
 });
 
-router.post('/create', jsonParser, async function (req, res, next) {
-    const client = rest.wrap(mime)
-        .wrap(errorCode, { code: 500 });
+router.get('/getByTranId/:tranId', jsonParser, async function (req, res, next) {
+    if (!req.params.tranId) {
+        res.send("Request Parameter is missing");
+        return;
+    }
 
+    const response = await queries.getByTransactionIdAsync(req.params.tranId)
+    console.log("Get operation is Succeeded.");
+    res.send(response);
+});
+
+router.post('/create', jsonParser, async function (req, res, next) {
     if (!req.body.link) {
         res.send("Request Body is Invalid");
         return;
     }
+    const result = await commands.CreateAsync(req.body);
+    console.log("Create operation is Succeeded.");
+    res.send(true);
 
-    client({ path: req.body.link }).then(
-        function (response) {
-            if (response.status.code == 200) {
-                (async () => {
-                    await commands.CreateAsync(req.body);
-                    console.log("Create operation is Succeeded.");
-                    res.send(true);
-                })();
-            }
-        },
-    ).catch(
-        function (response) {
-            console.error('response error: ', response);
-        }
-    );
 });
 
 router.delete('/delete/:id', async function (req, res, next) {

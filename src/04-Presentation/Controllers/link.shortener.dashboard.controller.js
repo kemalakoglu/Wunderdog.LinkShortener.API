@@ -15,13 +15,6 @@ router.get('/getLastTenLinksAsync', async function (req, res, next) {
     res.send(response);
 });
 
-router.get('/getMostSearchedLinksAsync', async function (req, res, next) {
-
-    const response = await queries.getMostSearchedLinksAsync();
-    console.log("Operation is Succeeded.");
-    res.send(response);
-});
-
 router.get('/getDailyLinksAsync', async function (req, res, next) {
 
     const response = await queries.getDailyLinksAsync();
@@ -30,13 +23,8 @@ router.get('/getDailyLinksAsync', async function (req, res, next) {
 
 });
 
-router.get('/listByPageAsync/:pageNum/:pageSize', jsonParser, async function (req, res, next) {
-    if (!req.params.pageNum || !req.params.pageSize) {
-        res.send("Page Number or Page Size is missing");
-        return;
-    }
-
-    const response = await queries.getListByPageAsync(req.params.pageSize, req.params.pageNum);
+router.get('/listByPageAsync', jsonParser, async function (req, res, next) {
+    const response = await queries.getListByPageAsync();
     console.log("Operation is Succeeded.");
     res.send(response);
 

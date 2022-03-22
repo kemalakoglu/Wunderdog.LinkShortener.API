@@ -14,7 +14,6 @@ All notable changes to this project will be documented in this file.
 ## [1.0.1] - 20-03-2022
 ### changed
 -app.js
--
 
 ### Added
 -kafka.producer.js
@@ -25,3 +24,7 @@ All notable changes to this project will be documented in this file.
 -web api end-points
 -model validations
 -interceptors
+
+## [1.0.2] - 23-03-2022
+### changed
+-update event was deleted

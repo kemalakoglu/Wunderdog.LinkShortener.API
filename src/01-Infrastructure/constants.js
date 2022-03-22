@@ -1,7 +1,4 @@
 class constants{
-    getMostSearchedLinksKey() {
-        return 'GetMostSearchedLinks'
-    };
     getListByPageKey() {
         return 'GetListByPage'
     };

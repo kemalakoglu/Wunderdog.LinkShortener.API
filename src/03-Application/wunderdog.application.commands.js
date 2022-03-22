@@ -10,13 +10,14 @@ class applicationCommands {
 
     async CreateAsync(request) {
         await producer.produce(kafkaTopics.createAsyncTopic(), JSON.stringify(request).toString());
+        console.log(`Create Event is produced. Messagebody is ${JSON.stringify(request).toString()}`);
     }
 
     async DeleteAsync(request) {
         const client = await initRedis();
-        // const response = await client.get(request.id);
-        // if (response == null)
-        //     return ("Data not found");
+        const response = await client.get(request.id);
+        if (response == null)
+            return ("Data not found");
         await producer.produce(kafkaTopics.deleteAsyncTopic(), JSON.stringify(request).toString());
     }
 }

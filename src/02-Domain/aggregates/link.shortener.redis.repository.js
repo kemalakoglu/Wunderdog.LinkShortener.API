@@ -13,15 +13,15 @@ class redisRepository {
         return response;
     }
 
-    async getMostSearchedLinksAsync() {
+    async getByTransactionIdAsync(id) {
         const client = await initRedis();
-        const response = await client.get(redisKeys.getMostSearchedLinksKey());
+        const response = await client.get(id);
         if (response == null)
             return ("Data not found");
         return response;
     }
 
-    async getListByPageAsync(pageSize, pageNumber) {
+    async getListByPageAsync() {
         const client = await initRedis();
         const response = await client.get(redisKeys.getListByPageKey());
         if (response == null)
