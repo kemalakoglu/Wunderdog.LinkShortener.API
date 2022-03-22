@@ -6,12 +6,12 @@ class applicationQueries {
         return await repository.getAsync(id);
     }
 
-    async getListByPageAsync(pageSize, pageNumber) {
-        return await repository.getListByPageAsync();
+    async getByTransactionIdAsync(id) {
+        return await repository.getByTransactionIdAsync(id);
     }
 
-    async getMostSearchedLinksAsync() {
-        return await repository.getMostSearchedLinksAsync();
+    async getListByPageAsync() {
+        return await repository.getListByPageAsync();
     }
 
     async getLastTenLinksAsync() {
