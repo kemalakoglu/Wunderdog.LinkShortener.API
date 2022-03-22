@@ -18,7 +18,6 @@ class kafkaProducer {
 				waitForLeaders: true,
 				topics: [
 					{ topic: 'create-link' },
-					{ topic: 'update-link' },
 					{ topic: 'delete-link' },
 				]
 			})

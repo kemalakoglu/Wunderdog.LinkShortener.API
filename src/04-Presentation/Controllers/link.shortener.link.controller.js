@@ -49,32 +49,6 @@ router.post('/create', jsonParser, async function (req, res, next) {
     );
 });
 
-router.put('/update', jsonParser, async function (req, res, next) {
-    const client = rest.wrap(mime)
-        .wrap(errorCode, { code: 500 });
-
-    if (!req.body.link || !req.body.id) {
-        res.send("Request Body is Invalid");
-        return;
-    }
-
-    client({ path: req.body.link }).then(
-        function (response) {
-            if (response.status.code == 200) {
-                (async () => {
-                    await commands.UpdateAsync(req.body);
-                    console.log("Update operation is Succeeded.");
-                    res.send(true);
-                })();
-            }
-        },
-    ).catch(
-        function (response) {
-            console.error('response error: ', response);
-        }
-    );
-});
-
 router.delete('/delete/:id', async function (req, res, next) {
 
     if (!req.params.id) {
@@ -83,7 +57,7 @@ router.delete('/delete/:id', async function (req, res, next) {
     }
 
     await commands.DeleteAsync(req.params.id);
-    console.log("Update operation is Succeeded.");
+    console.log("Delete operation is Succeeded.");
     res.send(true);
 
 });

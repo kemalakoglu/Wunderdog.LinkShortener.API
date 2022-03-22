@@ -14,9 +14,6 @@ class constants{
     createAsyncTopic() {
         return 'create-link'
     };
-    updateAsyncTopic() {
-        return 'update-link'
-    };
     deleteAsyncTopic() {
         return 'delete-link'
     };
