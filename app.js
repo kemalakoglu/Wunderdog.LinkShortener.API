@@ -7,13 +7,16 @@ const _ = require('lodash');
 const app = express();
 const port = 8080;
 const bodyParser = require('body-parser');
-const linkController = require('./src/04-Presentation/Controllers/link.shortener.link.controller');
-const dashboardController = require('./src/04-Presentation/Controllers/link.shortener.dashboard.controller');
+const commandController = require('./src/04-Presentation/Controllers/link.shortener.command.controller');
+const queryController = require('./src/04-Presentation/Controllers/link.shortener.query.controller');
 const kafkaProducer = require('./src/01-Infrastructure/kafka.producer');
-const kafka = new kafkaProducer();
-app.use('/link', linkController);
-app.use('/dashboard', dashboardController);
+const cors = require('cors');
 
+
+const kafka = new kafkaProducer();
+app.use('/api/command', commandController);
+app.use('/api/query', queryController);
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

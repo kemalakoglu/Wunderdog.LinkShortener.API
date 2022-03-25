@@ -25,6 +25,14 @@ All notable changes to this project will be documented in this file.
 -model validations
 -interceptors
 
-## [1.0.2] - 23-03-2022
+## [1.0.3] - 23-03-2022
 ### changed
 -update event was deleted
+
+## [1.0.4] - 25-03-2022
+
+### Added
+-README.md
+
+### changed
+-command&query api's are changed

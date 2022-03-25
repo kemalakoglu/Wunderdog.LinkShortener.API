@@ -2,6 +2,7 @@ const redis = require('redis');
 const initRedis = require("../../01-Infrastructure/redis.initialize");
 const constants = require("../../01-Infrastructure/constants");
 const redisKeys = new constants();
+const linkModel = require('./link.shortener.model');
 
 class redisRepository {
     
@@ -10,7 +11,7 @@ class redisRepository {
         const response = await client.get(id);
         if (response == null)
             return ("Data not found");
-        return response;
+            return  response.replace("\/", '');
     }
 
     async getByTransactionIdAsync(id) {
@@ -18,15 +19,15 @@ class redisRepository {
         const response = await client.get(id);
         if (response == null)
             return ("Data not found");
-        return response;
+            return  response.replace("\/", '');
     }
 
-    async getListByPageAsync() {
+    async getListByPageAsync() {    
         const client = await initRedis();
         const response = await client.get(redisKeys.getListByPageKey());
         if (response == null)
             return ("Data not found");
-        return response;
+        return  response.replace("\/", '');
     }
 
     async getLastTenLinksAsync() {
@@ -34,7 +35,7 @@ class redisRepository {
         const response = await client.get(redisKeys.getLastTenLinksKey());
         if (response == null)
             return ("Data not found");
-        return response;
+            return  response.replace("\/", '');
     }
 
     async getDailyLinksAsync() {
@@ -42,7 +43,7 @@ class redisRepository {
         const response = await client.get(redisKeys.getDailyLinksKey());
         if (response == null)
             return ("Data not found");
-        return response;
+            return  response.replace("\/", '');
     }
 }
 

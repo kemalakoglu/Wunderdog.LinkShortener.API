@@ -4,7 +4,6 @@ class linkModel {
         this.link = '';
         this.shortenedUrl = '';
         this.createDate = '';
-        this.updateDate = '';
     }
 }
 
